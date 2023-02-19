@@ -38,33 +38,33 @@ var loopGameloop;
 var loopPipeloop;
 
 $(document).ready(function () {
-  if (window.location.search == "?debug") debugmode = true;
-  if (window.location.search == "?easy") pipeheight = 200;
+  //   if (window.location.search == "?debug") debugmode = true;
+  //   if (window.location.search == "?easy") pipeheight = 200;
 
   //get the highscore
-  var savedscore = getCookie("highscore");
-  if (savedscore != "") highscore = parseInt(savedscore);
+  //  var savedscore = getCookie("highscore");
+  //  if (savedscore != "") highscore = parseInt(savedscore);
 
   //start with the splash screen
   showSplash();
 });
 
-function getCookie(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i].trim();
-    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-  }
-  return "";
-}
+// function getCookie(cname) {
+//   var name = cname + "=";
+//   var ca = document.cookie.split(";");
+//   for (var i = 0; i < ca.length; i++) {
+//     var c = ca[i].trim();
+//     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+//   }
+//   return "";
+// }
 
-function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  var expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + "; " + expires;
-}
+// function setCookie(cname, cvalue, exdays) {
+//   var d = new Date();
+//   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+//   var expires = "expires=" + d.toGMTString();
+//   document.cookie = cname + "=" + cvalue + "; " + expires;
+// }
 
 function showSplash() {
   currentstate = states.SplashScreen;
@@ -105,10 +105,10 @@ function startGame() {
   setBigScore();
 
   //debug mode?
-  if (debugmode) {
-    //show the bounding boxes
-    $(".boundingbox").show();
-  }
+  // if (debugmode) {
+  //show the bounding boxes
+  //  $(".boundingbox").show();
+  // }
 
   //start up our loops
   var updaterate = 1000.0 / 60.0; //60 times a second
@@ -150,13 +150,13 @@ function gameloop() {
   var boxbottom = boxtop + boxheight;
 
   //if we're in debug mode, draw the bounding box
-  if (debugmode) {
-    var boundingbox = $("#playerbox");
-    boundingbox.css("left", boxleft);
-    boundingbox.css("top", boxtop);
-    boundingbox.css("height", boxheight);
-    boundingbox.css("width", boxwidth);
-  }
+  //   if (debugmode) {
+  //     var boundingbox = $("#playerbox");
+  //     boundingbox.css("left", boxleft);
+  //     boundingbox.css("top", boxtop);
+  //     boundingbox.css("height", boxheight);
+  //     boundingbox.css("width", boxwidth);
+  //   }
 
   //did we hit the ground?
   if (box.bottom >= $("#land").offset().top) {
@@ -180,13 +180,13 @@ function gameloop() {
   var piperight = pipeleft + pipewidth;
   var pipebottom = pipetop + pipeheight;
 
-  if (debugmode) {
-    var boundingbox = $("#pipebox");
-    boundingbox.css("left", pipeleft);
-    boundingbox.css("top", pipetop);
-    boundingbox.css("height", pipeheight);
-    boundingbox.css("width", pipewidth);
-  }
+  //   if (debugmode) {
+  //     var boundingbox = $("#pipebox");
+  //     boundingbox.css("left", pipeleft);
+  //     boundingbox.css("top", pipetop);
+  //     boundingbox.css("height", pipeheight);
+  //     boundingbox.css("width", pipewidth);
+  //   }
 
   //have we gotten inside the pipe yet?
   if (boxright > pipeleft) {
@@ -211,17 +211,18 @@ function gameloop() {
 }
 
 //Handle space bar
-$(document).keydown(function (e) {
+$(document).on("keydown", function (e) {
   //space bar!
-  if (e.keyCode == 32) {
-    //in ScoreScreen, hitting space should click the "replay" button. else it's just a regular spacebar hit
-    if (currentstate == states.ScoreScreen) $("#replay").click();
-    else screenClick();
-  }
+  // if (e.key == " ") {
+  //in ScoreScreen, hitting space should click the "replay" button. else it's just a regular spacebar hit
+  if (currentstate == states.ScoreScreen) $("#replay").on(click);
+  else screenClick();
+  // }
 });
 
 //Handle mouse down OR touch start
-if ("ontouchstart" in window) $(document).on("touchstart", screenClick);
+if (document.getElementById("#gamescreen"))
+  $(document).on("touchstart", screenClick);
 else $(document).on("mousedown", screenClick);
 
 function screenClick() {
@@ -353,12 +354,12 @@ function showScore() {
   setBigScore(true);
 
   //have they beaten their high score?
-  if (score > highscore) {
-    //yeah!
-    highscore = score;
-    //save it!
-    setCookie("highscore", highscore, 999);
-  }
+  // if (score > highscore) {
+  //   //yeah!
+  //   highscore = score;
+  //   //save it!
+  //   setCookie("highscore", highscore, 999);
+  // }
 
   //update the scoreboard
   setSmallScore();
