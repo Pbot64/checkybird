@@ -213,11 +213,11 @@ function gameloop() {
 //Handle space bar
 $(document).on("keydown", function (e) {
   //space bar!
-  // if (e.key == " ") {
-  //in ScoreScreen, hitting space should click the "replay" button. else it's just a regular spacebar hit
-  if (currentstate == states.ScoreScreen) $("#replay").on(click);
-  else screenClick();
-  // }
+  if (e.key == " ") {
+    //in ScoreScreen, hitting space should click the "replay" button. else it's just a regular spacebar hit
+    if (currentstate == states.ScoreScreen) $("#replay").on(click);
+    else screenClick();
+  }
 });
 
 //Handle mouse down OR touch start
