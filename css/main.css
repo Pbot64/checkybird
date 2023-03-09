@@ -211,7 +211,7 @@ Screen - Game
   top: 0;
   width: 100%;
   height: 80%;
-  background-image: url("../assets/sky.png");
+  background-image: url("../assets/sky.svg");
   background-repeat: repeat-x;
   background-position: 0px 100%;
   background-color: #4ec0ca;
@@ -232,7 +232,7 @@ Screen - Game
   top: -16px;
   height: 16px;
   width: 100%;
-  background-image: url("../assets/ceiling.png");
+  background-image: url("../assets/ceiling.svg");
   background-repeat: repeat-x;
 
   -webkit-animation: animCeiling 481ms linear infinite;
@@ -244,7 +244,7 @@ Screen - Game
   bottom: 0;
   width: 100%;
   height: 20%;
-  background-image: url("../assets/land.png");
+  background-image: url("../assets/land.svg");
   background-repeat: repeat-x;
   background-position: 0px 0px;
   background-color: #ded895;
@@ -272,7 +272,7 @@ Screen - Game
   left: 65px;
   width: 188px;
   height: 170px;
-  background-image: url("../assets/splash.png");
+  background-image: url("../assets/splash.svg");
   background-repeat: no-repeat;
 }
 
@@ -284,7 +284,7 @@ Screen - Game
   left: 43px;
   width: 236px;
   height: 280px;
-  background-image: url("../assets/scoreboard.png");
+  background-image: url("../assets/scoreboard.svg");
   background-repeat: no-repeat;
 
   z-index: 1000;
@@ -354,7 +354,7 @@ Screen - Game
   position: absolute;
   width: 34px;
   height: 24px;
-  background-image: url("../assets/bird.png");
+  background-image: url("../assets/bird.svg");
 
   -webkit-animation: animBird 300ms steps(4) infinite;
   animation: animBird 300ms steps(4) infinite;
@@ -375,7 +375,7 @@ Screen - Game
   position: absolute;
   top: 0;
   width: 52px;
-  background-image: url("../assets/pipe.png");
+  background-image: url("../assets/pipe.svg");
   background-repeat: repeat-y;
   background-position: center;
 }
@@ -386,14 +386,14 @@ Screen - Game
   bottom: 0;
   width: 52px;
   height: 26px;
-  background-image: url("../assets/pipe-down.png");
+  background-image: url("../assets/pipe-down.svg");
 }
 
 .pipe_lower {
   position: absolute;
   bottom: 0;
   width: 52px;
-  background-image: url("../assets/pipe.png");
+  background-image: url("../assets/pipe.svg");
   background-repeat: repeat-y;
   background-position: center;
 }
@@ -404,7 +404,7 @@ Screen - Game
   top: 0;
   width: 52px;
   height: 26px;
-  background-image: url("../assets/pipe-up.png");
+  background-image: url("../assets/pipe-up.svg");
 }
 
 #footer {

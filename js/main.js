@@ -251,7 +251,7 @@ function setBigScore(erase) {
     elemscore.append(
       "<img src='assets/font_big_" +
         digits[i] +
-        ".png' alt='" +
+        ".svg' alt='" +
         digits[i] +
         "'>"
     );
@@ -266,7 +266,7 @@ function setSmallScore() {
     elemscore.append(
       "<img src='assets/font_small_" +
         digits[i] +
-        ".png' alt='" +
+        ".svg' alt='" +
         digits[i] +
         "'>"
     );
@@ -281,7 +281,7 @@ function setHighScore() {
     elemscore.append(
       "<img src='assets/font_small_" +
         digits[i] +
-        ".png' alt='" +
+        ".svg' alt='" +
         digits[i] +
         "'>"
     );
@@ -301,7 +301,7 @@ function setMedal() {
   if (score >= 40) medal = "platinum";
 
   elemmedal.append(
-    '<img src="assets/medal_' + medal + '.png" alt="' + medal + '">'
+    '<img src="assets/medal_' + medal + '.svg" alt="' + medal + '">'
   );
 
   //signal that a medal has been won
