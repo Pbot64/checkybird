@@ -5,7 +5,7 @@
     <!-- <meta name="author" content="Nebez Briefkani" /> -->
     <meta
       name="description"
-      content="play checky bird. a remake of popular game flappy bird built in html/css/js"
+      content="Checky Bird, a Checks VV inspired version of Flappy Bird by Dong Nguyen."
     />
     <!-- <meta
       name="keywords"
@@ -33,31 +33,33 @@
     <link href="css/main.css" rel="stylesheet" />
   </head>
   <body>
-    <div id="gamecontainer">
-      <div id="gamescreen">
-        <div id="sky" class="animated">
-          <div id="flyarea">
-            <div id="ceiling" class="animated"></div>
-            <!-- This is the flying and pipe area container -->
-            <div id="player" class="bird animated"></div>
+    <div id="flexcontainer">
+      <div id="gamecontainer">
+        <div id="gamescreen">
+          <div id="sky" class="animated">
+            <div id="flyarea">
+              <div id="ceiling" class="animated"></div>
+              <!-- This is the flying and pipe area container -->
+              <div id="player" class="bird animated"></div>
 
-            <div id="bigscore"></div>
+              <div id="bigscore"></div>
 
-            <div id="splash"></div>
+              <div id="splash"></div>
 
-            <div id="scoreboard">
-              <div id="medal"></div>
-              <div id="currentscore"></div>
-              <div id="highscore"></div>
-              <div id="replay">
-                <img src="assets/replay.png" alt="replay" />
+              <div id="scoreboard">
+                <div id="medal"></div>
+                <div id="currentscore"></div>
+                <div id="highscore"></div>
+                <div id="replay">
+                  <img src="assets/replay.svg" alt="replay" />
+                </div>
               </div>
+                
+              <!-- Pipes go here! -->
             </div>
-
-            <!-- Pipes go here! -->
           </div>
+          <div id="land" class="animated"><div id="debug"></div></div>
         </div>
-        <div id="land" class="animated"><div id="debug"></div></div>
       </div>
     </div>
     <!-- <div id="footer">

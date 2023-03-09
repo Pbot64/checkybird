@@ -36,7 +36,7 @@
     background-position: 0px 100%;
   }
   100% {
-    background-position: -275px 100%;
+    background-position: -623px 100%;
   }
 }
 @-moz-keyframes animSky {
@@ -44,7 +44,7 @@
     background-position: 0px 100%;
   }
   100% {
-    background-position: -275px 100%;
+    background-position: -623px 100%;
   }
 }
 @-o-keyframes animSky {
@@ -52,7 +52,7 @@
     background-position: 0px 100%;
   }
   100% {
-    background-position: -275px 100%;
+    background-position: -623px 100%;
   }
 }
 @keyframes animSky {
@@ -60,7 +60,7 @@
     background-position: 0px 100%;
   }
   100% {
-    background-position: -275px 100%;
+    background-position: -623px 100%;
   }
 }
 
@@ -187,14 +187,25 @@ body {
   overflow: hidden;
   font-family: monospace;
   font-size: 12px;
-  color: #fff;
+  background-color: #000;
+}
+
+#flexcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000;
 }
 
 #gamecontainer {
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 525px;
+  width: 624px;
+  height: 624px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #111;
+  border: #191919 solid 1.5px;
 }
 
 /*
@@ -210,11 +221,11 @@ Screen - Game
   position: absolute;
   top: 0;
   width: 100%;
-  height: 80%;
+  height: 528px;
   background-image: url("../assets/sky.svg");
   background-repeat: repeat-x;
   background-position: 0px 100%;
-  background-color: #4ec0ca;
+  background-color: #111;
 
   -webkit-animation: animSky 7s linear infinite;
   animation: animSky 7s linear infinite;
@@ -222,15 +233,15 @@ Screen - Game
 
 #flyarea {
   position: absolute;
-  bottom: 0;
-  height: 420px;
+  top: 93px;
+  height: 432px;
   width: 100%;
 }
 
 #ceiling {
   position: absolute;
-  top: -16px;
-  height: 16px;
+  top: -8px;
+  height: 8px;
   width: 100%;
   background-image: url("../assets/ceiling.svg");
   background-repeat: repeat-x;
@@ -243,11 +254,11 @@ Screen - Game
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 20%;
+  height: 96px;
   background-image: url("../assets/land.svg");
   background-repeat: repeat-x;
   background-position: 0px 0px;
-  background-color: #ded895;
+  background-color: #000;
 
   -webkit-animation: animLand 2516ms linear infinite;
   animation: animLand 2516ms linear infinite;
@@ -255,8 +266,14 @@ Screen - Game
 
 #bigscore {
   position: absolute;
-  top: 20px;
-  left: 150px;
+  top: 24px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: transparent;
+
   z-index: 100;
 }
 
@@ -269,7 +286,11 @@ Screen - Game
   position: absolute;
   opacity: 0;
   top: 75px;
-  left: 65px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   width: 188px;
   height: 170px;
   background-image: url("../assets/splash.svg");
@@ -280,10 +301,14 @@ Screen - Game
   position: absolute;
   display: none;
   opacity: 0;
-  top: 64px;
-  left: 43px;
   width: 236px;
   height: 280px;
+  top: 64px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   background-image: url("../assets/scoreboard.svg");
   background-repeat: no-repeat;
 
@@ -293,16 +318,16 @@ Screen - Game
 #medal {
   position: absolute;
   opacity: 0;
-  top: 114px;
-  left: 32px;
+  top: 117px;
+  left: 39px;
   width: 44px;
   height: 44px;
 }
 
 #currentscore {
   position: absolute;
-  top: 105px;
-  left: 107px;
+  top: 114px;
+  left: 97px;
   width: 104px;
   height: 14px;
   text-align: right;
@@ -314,8 +339,8 @@ Screen - Game
 
 #highscore {
   position: absolute;
-  top: 147px;
-  left: 107px;
+  top: 150px;
+  left: 97px;
   width: 104px;
   height: 14px;
   text-align: right;

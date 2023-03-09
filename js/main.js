@@ -91,7 +91,7 @@ function showSplash() {
   $(".animated").css("-webkit-animation-play-state", "running");
 
   //fade in the splash
-  $("#splash").transition({ opacity: 1 }, 2000, "ease");
+  $("#splash").transition({ opacity: 1 }, 3000, "ease");
 }
 
 function startGame() {
@@ -99,7 +99,7 @@ function startGame() {
 
   //fade out the splash
   $("#splash").stop();
-  $("#splash").transition({ opacity: 0 }, 500, "ease");
+  $("#splash").transition({ opacity: 0 }, 800, "ease");
 
   //update the big score
   setBigScore();
