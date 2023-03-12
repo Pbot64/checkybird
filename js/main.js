@@ -1,4 +1,4 @@
-var debugmode = false;
+// var debugmode = false;
 
 var states = Object.freeze({
   SplashScreen: 0,
@@ -22,7 +22,11 @@ var pipeheight = 90;
 var pipewidth = 52;
 var pipes = new Array();
 
-var replayclickable = false;
+var replayclickable = true;
+
+//loops
+var loopGameloop;
+var loopPipeloop;
 
 //sounds
 var volume = 30;
@@ -31,15 +35,26 @@ var soundScore = new buzz.sound("assets/sounds/sfx_point.ogg");
 var soundHit = new buzz.sound("assets/sounds/sfx_hit.ogg");
 var soundDie = new buzz.sound("assets/sounds/sfx_die.ogg");
 var soundSwoosh = new buzz.sound("assets/sounds/sfx_swooshing.ogg");
-buzz.all().setVolume(volume);
+buzz.all().setVolume(0);
+buzz.sounds.map((sound) => sound.mute());
 
-//loops
-var loopGameloop;
-var loopPipeloop;
+// Listens for user interaction to allow play() sounds
+$("#flyarea").on(
+  {
+    click: function (e) {
+      buzz.all().unmute().setVolume(volume);
+      buzz.sounds.unmute;
+    },
+    mouseleave: function (e) {
+      buzz.all().mute();
+    },
+  },
+  { once: true }
+);
 
-$(document).ready(function () {
-  if (window.location.search == "?debug") debugmode = true;
-  if (window.location.search == "?easy") pipeheight = 200;
+$(document).on("DOMContentLoaded", function () {
+  // if (window.location.search == "?debug") debugmode = true;
+  //  if (window.location.search == "?easy") pipeheight = 200;
 
   //get the highscore
   const savedscore = getCookie("highscore");
@@ -49,6 +64,7 @@ $(document).ready(function () {
   showSplash();
 });
 
+// Set/Get Cookie
 function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(";");
@@ -58,7 +74,6 @@ function getCookie(cname) {
   }
   return "";
 }
-
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -83,7 +98,7 @@ function showSplash() {
   updatePlayer($("#player"));
 
   soundSwoosh.stop();
-  soundSwoosh.play();
+  soundSwoosh.mute === false && soundSwoosh.play();
 
   //clear out all the pipes if there are any
   $(".pipe").remove();
@@ -120,10 +135,10 @@ function startGame() {
   setBigScore();
 
   // debug mode?
-  if (debugmode) {
-    // show the bounding boxes
-    $(".boundingbox").show();
-  }
+  //  if (debugmode) {
+  // show the bounding boxes
+  //  $(".boundingbox").show();
+  // }
 
   //start up our loops
   var updaterate = 1000.0 / 60.0;
@@ -169,13 +184,13 @@ function gameloop() {
   var boxbottom = boxtop + boxheight;
 
   //if we're in debug mode, draw the bounding box
-  if (debugmode) {
-    var boundingbox = $("#playerbox");
-    boundingbox.css("left", boxleft);
-    boundingbox.css("top", boxtop);
-    boundingbox.css("height", boxheight);
-    boundingbox.css("width", boxwidth);
-  }
+  // if (debugmode) {
+  //   var boundingbox = $("#playerbox");
+  //   boundingbox.css("left", boxleft);
+  //   boundingbox.css("top", boxtop);
+  //   boundingbox.css("height", boxheight);
+  //   boundingbox.css("width", boxwidth);
+  // }
 
   //did we hit the ground?
   if (box.bottom >= $("#land").offset().top) {
@@ -200,13 +215,13 @@ function gameloop() {
   var piperight = pipeleft + pipewidth;
   var pipebottom = pipetop + pipeheight;
 
-  if (debugmode) {
-    var boundingbox = $("#pipebox");
-    boundingbox.css("left", pipeleft);
-    boundingbox.css("top", pipetop);
-    boundingbox.css("height", pipeheight);
-    boundingbox.css("width", pipewidth);
-  }
+  // if (debugmode) {
+  //   var boundingbox = $("#pipebox");
+  //   boundingbox.css("left", pipeleft);
+  //   boundingbox.css("top", pipetop);
+  //   boundingbox.css("height", pipeheight);
+  //   boundingbox.css("width", pipewidth);
+  // }
 
   //have we gotten inside the pipe yet?
   if (boxright > pipeleft) {
@@ -224,7 +239,6 @@ function gameloop() {
   if (boxleft > piperight) {
     //yes, remove it
     pipes.splice(0, 1);
-
     //and score a point
     playerScore();
   }
@@ -480,21 +494,26 @@ function playerScore() {
   setBigScore();
 }
 
+//* Removes 'old' pipes and/or adds new pipes to the pipes arry + determines properties and values of new pipes.
 function updatePipes() {
-  //Do any pipes need removal?
+  // Removes an 'old' pipe from pipes array--and 'old pipe' is one that has moved off the left side of the game-screen (aka. 100px left of bird's position)
   $(".pipe")
     .filter(function () {
       return $(this).position().left <= -100;
     })
     .remove();
 
-  //add a new pipe (top height + bottom height  + pipeheight == flyArea) and put it in our tracker
+  // Determines certain screen layout property values (async) and uses these values to calculate the dimensions of a new pipe (ex. top height + bottom height  + pipeheight == flyArea)
   var padding = 80;
+  // Double padding (for top and bottom)
   var constraint = flyArea - pipeheight - padding * 2;
-  //double padding (for top and bottom)
   var topheight = Math.floor(Math.random() * constraint + padding);
-  //add lower padding
   var bottomheight = flyArea - pipeheight - topheight;
+
+  // Variable used to eliminate race conditions involved in new pipe creation process
+  var setNewPipe = false;
+
+  // Creates a new pipe composed of 3 HTML elements (parent element with 2 child elements, both have dynamic height values and are green by default)
   var newpipe = $(
     '<div class="pipe animated"><div class="pipe_upper" style="height: ' +
       topheight +
@@ -502,8 +521,32 @@ function updatePipes() {
       bottomheight +
       'px;"></div></div>'
   );
-  $("#flyarea").append(newpipe);
-  pipes.push(newpipe);
+
+  //* Determines the color of the new pipe before adding it to the array of pipes
+  // Checks that pipes array exists and contains at least one pipe (first pipe always starts green)
+  if (pipes?.length >= 1) {
+    // Changes color of newpipe to red if the offsetHeight of the new pipe's upper part is lower than that of the previoulsly created pipe.
+    var topPipeJustMade = pipes[pipes.length - 1][0].children[0];
+    if (topPipeJustMade.offsetHeight <= topheight) {
+      for (var i = 0; i <= 1; i++) {
+        newpipe[0].children[i].classList.add("redPipe");
+        setNewPipe = true;
+      }
+    } // Determines if newpipe should remain green and then allows it to be added to pipes array (added to prevent race conditions)
+    else if (topPipeJustMade.offsetHeight >= topheight) {
+      setNewPipe = true;
+    }
+  } else {
+    setNewPipe = true;
+  }
+
+  //* Adds a new pipe to the pipes array and appends the new pipe's HTML to the game's "Fly Area"
+  // Blocks a new pipe from being added unless the new pipe is the first pipe (green by default) or has waited for its async color determination
+  if (setNewPipe === true) {
+    $("#flyarea").append(newpipe);
+    pipes.push(newpipe);
+    setNewPipe = false;
+  }
 }
 
 var isIncompatible = {

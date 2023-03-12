@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Checky Bird</title>
-
-    <!-- TODO  -->
-    <meta name="author" content="Jack Butcher" />
+    <title>vv Checky Birdy</title>
+    <meta name="author" content="_Final DAO Team Effort" />
     <meta
       name="description"
       content="Checky Bird, a vv Checks inspired version of the classic game Flappy Bird by Dong Nguyen."
     />
     <meta
       name="keywords"
-      content="flappybird,flappy,bird,Checkybird,Checky,html,html5,css,css3,js,javascript,jquery,github,nebez,briefkani,nebezb,open,source,opensource"
+      content="flappybird,flappy,bird,Checks,vv,blockchain,bitcoin,NFTs,js,javascript,jquery sucks,github,Jack Butcher,open,source,opensource,smart contracts,web3"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- TODO -->
+    <meta
+      name="viewport"
+      content="width=device-width height=device-height, initial-scale=1"
+    />
     <!-- Open Graph tags -->
     <meta property="og:title" content="Checky Bird" />
     <meta
@@ -25,7 +24,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="https://nebezb.com/Checkybird/assets/thumb.png"
+      content="https://github.com/Pbot64/checkybird/blob/main/screencap.png"
     />
     <meta property="og:url" content="https://www.finaldao.xyz/" />
     <meta property="og:site_name" content="Checky Bird" />
@@ -34,6 +33,7 @@
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
   </head>
+
   <body>
     <div id="flexcontainer">
       <div id="gamecontainer">
@@ -46,7 +46,6 @@
               <div id="player" class="bird animated"></div>
               <div id="bigscore"></div>
               <div id="splash"></div>
-
               <div id="scoreboard">
                 <div id="medal"></div>
                 <div id="currentscore"></div>
@@ -55,41 +54,31 @@
                   <img src="assets/replay.svg" alt="replay" />
                 </div>
               </div>
-
               <!-- Pipes go here! -->
             </div>
           </div>
-          <div id="land" class="animated"><div id="debug"></div></div>
+          <div id="land" class="animated">
+            <div id="debug"></div>
+          </div>
         </div>
       </div>
     </div>
     <div id="footer">
       <div id="footer-inner">
-        <a href="https://www.dotgears.com/"
-          >original game/concept/art by dong nguyen</a
-        >
         <a href="https://finaldao.xyz/"
-          >_A Final DAO effort. Made by Kent "the Gent" , Louis "Git Outta Here"
-          Accorsi, Kane "I'm Tired" Freeman, and Rocket to the "Moon"
-        </a>
-        <a href="https://github.com/Pbot64/Checkybird/"
-          >view public -v of github project</a
+          >_A Final DAO production. Come check us out!</a
         >
-
+        <a href="https://github.com/Pbot64/Checkybird/"
+          >view the source code of project here on Github</a
+        >
         <div class="boundingbox" id="playerbox"></div>
         <div class="boundingbox" id="pipebox"></div>
-        <div id="keyinput">
-          <input id="whichkey" value="type something" />
-          <div id="log"></div>
-        </div>
       </div>
     </div>
-
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.transit.min.js"></script>
     <script src="js/buzz.min.js"></script>
     <script src="js/main.js"></script>
-
     <script>
       function inIframe() {
         try {

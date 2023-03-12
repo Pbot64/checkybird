@@ -172,6 +172,7 @@
   box-sizing: border-box;
   /* gpu acceleration */
   -webkit-transition: translate3d(0, 0, 0);
+  transition: translate3d(0, 0, 0);
   /* select disable */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -383,7 +384,10 @@ Screen - Game
   width: 34px;
   height: 24px;
   background-image: url("../assets/bird.svg");
-
+  -webkit-filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg)
+    brightness(80%) contrast(159%);
+  filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg) brightness(80%)
+    contrast(159%);
   -webkit-animation: animBird 300ms steps(4) infinite;
   animation: animBird 300ms steps(4) infinite;
 }
@@ -394,7 +398,6 @@ Screen - Game
   width: 52px;
   height: 100%;
   z-index: 10;
-
   -webkit-animation: animPipe 7500ms linear;
   animation: animPipe 7500ms linear;
 }
@@ -457,7 +460,14 @@ Screen - Game
 }
 
 #whichkey {
-  display: "contents";
+  display: none;
   height: 1px;
   width: 1px;
+}
+
+.redPipe {
+  -webkit-filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg)
+    brightness(80%) contrast(159%);
+  filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg) brightness(80%)
+    contrast(159%);
 }
