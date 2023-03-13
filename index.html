@@ -1,81 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Checky Bird</title>
-    <!-- <meta name="author" content="Nebez Briefkani" /> -->
+    <title>vv Checky Birdy</title>
+    <meta name="author" content="_Final DAO Team Effort" />
     <meta
       name="description"
-      content="play checky bird. a remake of popular game flappy bird built in html/css/js"
+      content="Checky Bird, a vv Checks inspired version of the classic game Flappy Bird by Dong Nguyen."
     />
-    <!-- <meta
+    <meta
       name="keywords"
-      content="flappybird,flappy,bird,floppybird,floppy,html,html5,css,css3,js,javascript,jquery,github,nebez,briefkani,nebezb,open,source,opensource"
-    /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-
+      content="flappybird,flappy,bird,Checks,vv,blockchain,bitcoin,NFTs,js,javascript,jquery sucks,github,Jack Butcher,open,source,opensource,smart contracts,web3"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width height=device-height, initial-scale=1"
+    />
     <!-- Open Graph tags -->
-    <!-- <meta property="og:title" content="Floppy Bird" />
+    <meta property="og:title" content="Checky Bird" />
     <meta
       property="og:description"
-      content="play floppy bird. a remake of popular game flappy bird built in html/css/js"
+      content="Play Checky bird, a remake of popular game flappy bird built in html/css/js"
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="https://nebezb.com/floppybird/assets/thumb.png"
+      content="https://github.com/Pbot64/checkybird/blob/main/screencap.png"
     />
-    <meta property="og:url" content="https://nebezb.com/floppybird/" />
-    <meta property="og:site_name" content="Floppy Bird" /> -->
+    <meta property="og:url" content="https://www.finaldao.xyz/" />
+    <meta property="og:site_name" content="Checky Bird" />
 
     <!-- Style sheets -->
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
   </head>
+
   <body>
-    <div id="gamecontainer">
-      <div id="gamescreen">
-        <div id="sky" class="animated">
-          <div id="flyarea">
-            <div id="ceiling" class="animated"></div>
-            <!-- This is the flying and pipe area container -->
-            <div id="player" class="bird animated"></div>
+    <div id="flexcontainer">
+      <div id="gamecontainer">
+        <div id="gamescreen">
+          <div id="sky" class="animated">
+            <div id="flyarea">
+              <div id="ceiling" class="animated"></div>
 
-            <div id="bigscore"></div>
-
-            <div id="splash"></div>
-
-            <div id="scoreboard">
-              <div id="medal"></div>
-              <div id="currentscore"></div>
-              <div id="highscore"></div>
-              <div id="replay">
-                <img src="assets/replay.png" alt="replay" />
+              <!-- This is the flying and pipe area container -->
+              <div id="player" class="bird animated"></div>
+              <div id="bigscore"></div>
+              <div id="splash"></div>
+              <div id="scoreboard">
+                <div id="medal"></div>
+                <div id="currentscore"></div>
+                <div id="highscore"></div>
+                <div id="replay">
+                  <img src="assets/replay.svg" alt="replay" />
+                </div>
               </div>
+              <!-- Pipes go here! -->
             </div>
-
-            <!-- Pipes go here! -->
+          </div>
+          <div id="land" class="animated">
+            <div id="debug"></div>
           </div>
         </div>
-        <div id="land" class="animated"><div id="debug"></div></div>
       </div>
     </div>
-    <!-- <div id="footer">
-      <a href="https://www.dotgears.com/"
-        >original game/concept/art by dong nguyen</a
-      > -->
-      <!-- <a href="https://nebezb.com/">recreated by nebez briefkani</a> -->
-      <!-- <a href="https://github.com/nebez/floppybird/">view github project</a> -->
+    <div id="footer">
+      <div id="footer-inner">
+        <a href="https://finaldao.xyz/"
+          >_A Final DAO production. Come check us out!</a
+        >
+        <a href="https://github.com/Pbot64/Checkybird/"
+          >view the source code of project here on Github</a
+        >
+        <div class="boundingbox" id="playerbox"></div>
+        <div class="boundingbox" id="pipebox"></div>
+      </div>
     </div>
-    <div class="boundingbox" id="playerbox"></div>
-    <div class="boundingbox" id="pipebox"></div>
-
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.transit.min.js"></script>
     <script src="js/buzz.min.js"></script>
     <script src="js/main.js"></script>
-
-    <!-- <script>
+    <script>
       function inIframe() {
         try {
           return window.self !== window.top;
@@ -83,12 +87,17 @@
           return true;
         }
       }
-      if (!inIframe() && window.location.hostname == 'nebezb.com') {
-         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-         ga('create', 'UA-48047334-1', 'auto');
-         ga('send', 'pageview');
+      if (!inIframe() && window.location.hostname == "finaldao.xyz") {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-48047334-1", "auto");
+        ga("send", "pageview");
       }
-   </script> 
-    <script async src='https://www.google-analytics.com/analytics.js'></script> -->
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
   </body>
 </html>

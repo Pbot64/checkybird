@@ -36,7 +36,7 @@
     background-position: 0px 100%;
   }
   100% {
-    background-position: -275px 100%;
+    background-position: -623px 100%;
   }
 }
 @-moz-keyframes animSky {
@@ -44,7 +44,7 @@
     background-position: 0px 100%;
   }
   100% {
-    background-position: -275px 100%;
+    background-position: -623px 100%;
   }
 }
 @-o-keyframes animSky {
@@ -52,7 +52,7 @@
     background-position: 0px 100%;
   }
   100% {
-    background-position: -275px 100%;
+    background-position: -623px 100%;
   }
 }
 @keyframes animSky {
@@ -60,7 +60,7 @@
     background-position: 0px 100%;
   }
   100% {
-    background-position: -275px 100%;
+    background-position: -623px 100%;
   }
 }
 
@@ -172,6 +172,7 @@
   box-sizing: border-box;
   /* gpu acceleration */
   -webkit-transition: translate3d(0, 0, 0);
+  transition: translate3d(0, 0, 0);
   /* select disable */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -183,18 +184,32 @@
 
 html,
 body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   height: 100%;
   overflow: hidden;
   font-family: monospace;
   font-size: 12px;
-  color: #fff;
+  background-color: #000;
+}
+
+#flexcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000;
 }
 
 #gamecontainer {
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 525px;
+  width: 624px;
+  height: 624px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #111;
+  border: #191919 solid 1.5px;
 }
 
 /*
@@ -210,11 +225,11 @@ Screen - Game
   position: absolute;
   top: 0;
   width: 100%;
-  height: 80%;
-  background-image: url("../assets/sky.png");
+  height: 528px;
+  background-image: url("../assets/sky.svg");
   background-repeat: repeat-x;
   background-position: 0px 100%;
-  background-color: #4ec0ca;
+  background-color: #111;
 
   -webkit-animation: animSky 7s linear infinite;
   animation: animSky 7s linear infinite;
@@ -222,17 +237,17 @@ Screen - Game
 
 #flyarea {
   position: absolute;
-  bottom: 0;
-  height: 420px;
+  top: 93px;
+  height: 432px;
   width: 100%;
 }
 
 #ceiling {
   position: absolute;
-  top: -16px;
-  height: 16px;
+  top: -8px;
+  height: 8px;
   width: 100%;
-  background-image: url("../assets/ceiling.png");
+  background-image: url("../assets/ceiling.svg");
   background-repeat: repeat-x;
 
   -webkit-animation: animCeiling 481ms linear infinite;
@@ -243,11 +258,11 @@ Screen - Game
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 20%;
-  background-image: url("../assets/land.png");
+  height: 96px;
+  background-image: url("../assets/land.svg");
   background-repeat: repeat-x;
   background-position: 0px 0px;
-  background-color: #ded895;
+  background-color: #000;
 
   -webkit-animation: animLand 2516ms linear infinite;
   animation: animLand 2516ms linear infinite;
@@ -255,8 +270,14 @@ Screen - Game
 
 #bigscore {
   position: absolute;
-  top: 20px;
-  left: 150px;
+  top: 24px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: transparent;
+
   z-index: 100;
 }
 
@@ -269,10 +290,14 @@ Screen - Game
   position: absolute;
   opacity: 0;
   top: 75px;
-  left: 65px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   width: 188px;
   height: 170px;
-  background-image: url("../assets/splash.png");
+  background-image: url("../assets/splash.svg");
   background-repeat: no-repeat;
 }
 
@@ -280,11 +305,15 @@ Screen - Game
   position: absolute;
   display: none;
   opacity: 0;
-  top: 64px;
-  left: 43px;
   width: 236px;
   height: 280px;
-  background-image: url("../assets/scoreboard.png");
+  top: 64px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-image: url("../assets/scoreboard.svg");
   background-repeat: no-repeat;
 
   z-index: 1000;
@@ -293,16 +322,16 @@ Screen - Game
 #medal {
   position: absolute;
   opacity: 0;
-  top: 114px;
-  left: 32px;
+  top: 117px;
+  left: 39px;
   width: 44px;
   height: 44px;
 }
 
 #currentscore {
   position: absolute;
-  top: 105px;
-  left: 107px;
+  top: 114px;
+  left: 97px;
   width: 104px;
   height: 14px;
   text-align: right;
@@ -314,8 +343,8 @@ Screen - Game
 
 #highscore {
   position: absolute;
-  top: 147px;
-  left: 107px;
+  top: 150px;
+  left: 97px;
   width: 104px;
   height: 14px;
   text-align: right;
@@ -354,8 +383,11 @@ Screen - Game
   position: absolute;
   width: 34px;
   height: 24px;
-  background-image: url("../assets/bird.png");
-
+  background-image: url("../assets/bird.svg");
+  -webkit-filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg)
+    brightness(80%) contrast(159%);
+  filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg) brightness(80%)
+    contrast(159%);
   -webkit-animation: animBird 300ms steps(4) infinite;
   animation: animBird 300ms steps(4) infinite;
 }
@@ -366,7 +398,6 @@ Screen - Game
   width: 52px;
   height: 100%;
   z-index: 10;
-
   -webkit-animation: animPipe 7500ms linear;
   animation: animPipe 7500ms linear;
 }
@@ -375,7 +406,7 @@ Screen - Game
   position: absolute;
   top: 0;
   width: 52px;
-  background-image: url("../assets/pipe.png");
+  background-image: url("../assets/pipe.svg");
   background-repeat: repeat-y;
   background-position: center;
 }
@@ -386,14 +417,14 @@ Screen - Game
   bottom: 0;
   width: 52px;
   height: 26px;
-  background-image: url("../assets/pipe-down.png");
+  background-image: url("../assets/pipe-down.svg");
 }
 
 .pipe_lower {
   position: absolute;
   bottom: 0;
   width: 52px;
-  background-image: url("../assets/pipe.png");
+  background-image: url("../assets/pipe.svg");
   background-repeat: repeat-y;
   background-position: center;
 }
@@ -404,13 +435,12 @@ Screen - Game
   top: 0;
   width: 52px;
   height: 26px;
-  background-image: url("../assets/pipe-up.png");
+  background-image: url("../assets/pipe-up.svg");
 }
 
 #footer {
-  position: absolute;
-  bottom: 3px;
-  left: 3px;
+  display: flex;
+  justify-content: center;
 }
 
 #footer a,
@@ -422,4 +452,22 @@ Screen - Game
   padding: 2px;
   text-decoration: none;
   color: #fff;
+}
+
+#footer-inner {
+  align-items: center;
+  width: 624px;
+}
+
+#whichkey {
+  display: none;
+  height: 1px;
+  width: 1px;
+}
+
+.redPipe {
+  -webkit-filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg)
+    brightness(80%) contrast(159%);
+  filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg) brightness(80%)
+    contrast(159%);
 }
