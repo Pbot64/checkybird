@@ -37,7 +37,6 @@ var soundHit = new buzz.sound("assets/sounds/sfx_hit.ogg");
 var soundDie = new buzz.sound("assets/sounds/sfx_die.ogg");
 var soundSwoosh = new buzz.sound("assets/sounds/sfx_swooshing.ogg");
 buzz.all().setVolume(0);
-buzz.sounds.map((sound) => sound.mute());
 
 // Listens for user interaction to allow play() sounds
 $("#flyarea").on(
@@ -45,9 +44,6 @@ $("#flyarea").on(
     click: function (e) {
       buzz.all().unmute().setVolume(volume);
       buzz.sounds.unmute;
-    },
-    mouseleave: function (e) {
-      buzz.all().mute();
     },
   },
   { once: true }
@@ -161,11 +157,7 @@ function updatePlayer(player) {
     rotate: rotation,
     top: position,
     filter: `invert(1%) sepia(100%) saturate(50) hue-rotate(${hue}deg) brightness(80%) contrast(159%)`,
-
-    // filter:
-    //   "invert(1%) sepia(100%) saturate(50) hue-rotate( " +
-    //   calculate +
-    //   "deg) brightness(80 %) contrast(159 %)",
+"deg) brightness(80 %) contrast(159 %)"
   });
 }
 
