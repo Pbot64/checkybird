@@ -12,6 +12,7 @@ var gravity = 0.15;
 var velocity = 10;
 var position = 180;
 var rotation = 0;
+var hue = 333;
 var jump = -3.6;
 var flyArea = $("#flyarea").height();
 
@@ -154,10 +155,17 @@ function updatePlayer(player) {
   //rotation
   rotation = Math.min((velocity / 10) * 90, 90);
 
+  hue = Math.floor(Math.random() * 360);
   //apply rotation and position
   $(player).css({
     rotate: rotation,
     top: position,
+    filter: `invert(1%) sepia(100%) saturate(50) hue-rotate(${hue}deg) brightness(80%) contrast(159%)`,
+
+    // filter:
+    //   "invert(1%) sepia(100%) saturate(50) hue-rotate( " +
+    //   calculate +
+    //   "deg) brightness(80 %) contrast(159 %)",
   });
 }
 
