@@ -157,7 +157,6 @@ function updatePlayer(player) {
     rotate: rotation,
     top: position,
     filter: `invert(1%) sepia(100%) saturate(50) hue-rotate(${hue}deg) brightness(80%) contrast(159%)`,
-"deg) brightness(80 %) contrast(159 %)"
   });
 }
 
