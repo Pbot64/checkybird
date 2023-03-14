@@ -54,29 +54,29 @@ $(document).on("DOMContentLoaded", function () {
   //  if (window.location.search == "?easy") pipeheight = 200;
 
   //get the highscore
-  const savedscore = getCookie("highscore");
-  if (savedscore != "") highscore = parseInt(savedscore);
+  // const savedscore = getCookie("highscore");
+  // if (savedscore != "") highscore = parseInt(savedscore);
 
   //start with the splash screen
   showSplash();
 });
 
 // Set/Get Cookie
-function getCookie(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i].trim();
-    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-  }
-  return "";
-}
-function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  var expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + "; " + expires;
-}
+// function getCookie(cname) {
+//   var name = cname + "=";
+//   var ca = document.cookie.split(";");
+//   for (var i = 0; i < ca.length; i++) {
+//     var c = ca[i].trim();
+//     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+//   }
+//   return "";
+// }
+// function setCookie(cname, cvalue, exdays) {
+//   var d = new Date();
+//   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+//   var expires = "expires=" + d.toGMTString();
+//   document.cookie = cname + "=" + cvalue + "; " + expires;
+// }
 
 function showSplash() {
   currentstate = states.SplashScreen;
@@ -395,7 +395,7 @@ function showScore() {
     //yeah!
     highscore = score;
     //save it!
-    setCookie("highscore", highscore, 999);
+    // setCookie("highscore", highscore, 999);
   }
 
   //update the scoreboard

@@ -33,7 +33,6 @@
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
   </head>
-
   <body>
     <div id="flexcontainer">
       <div id="gamecontainer">
@@ -87,7 +86,7 @@
           return true;
         }
       }
-      if (!inIframe() && window.location.hostname == "finaldao.xyz") {
+      if (!inIframe()) {
         window.ga =
           window.ga ||
           function () {
