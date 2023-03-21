@@ -173,6 +173,10 @@
   /* gpu acceleration */
   -webkit-transition: translate3d(0, 0, 0);
   transition: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
   /* select disable */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -384,8 +388,8 @@ Screen - Game
   width: 34px;
   height: 24px;
   background-image: url("../assets/bird.svg");
-  -webkit-filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg)
-    brightness(80%) contrast(159%);
+  /* -webkit-filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg)
+    brightness(80%) contrast(159%); */
   filter: invert(1%) sepia(100%) saturate(50) hue-rotate(325deg) brightness(80%)
     contrast(159%);
   -webkit-animation: animBird 300ms steps(4) infinite;
@@ -457,12 +461,6 @@ Screen - Game
 #footer-inner {
   align-items: center;
   width: 624px;
-}
-
-#whichkey {
-  display: none;
-  height: 1px;
-  width: 1px;
 }
 
 .redPipe {

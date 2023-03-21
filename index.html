@@ -30,7 +30,7 @@
     <meta property="og:site_name" content="Checky Bird" />
 
     <!-- Style sheets -->
-    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
   </head>
   <body>
@@ -79,24 +79,27 @@
     <script src="js/buzz.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-      function inIframe() {
+      (function inIframe() {
         try {
-          return window.self !== window.top;
+          window.self !== window.top || console.log("Outside iFrame");
+          return false;
         } catch (e) {
+          console.log("Inside iFrame");
           return true;
         }
-      }
-      if (!inIframe()) {
-        window.ga =
-          window.ga ||
-          function () {
-            (ga.q = ga.q || []).push(arguments);
-          };
-        ga.l = +new Date();
-        ga("create", "UA-48047334-1", "auto");
-        ga("send", "pageview");
-      }
+      })();
+      //   if (!inIframe()) {
+      //     window.ga =
+      //       window.ga ||
+      //       function () {
+      //         (ga.q = ga.q || []).push(arguments);
+      //       };
+      //     ga.l = +new Date();
+      //     ga("create", "UA-48047334-1", "auto");
+      //     ga("send", "pageview");
+      //   }
+      //
     </script>
-    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- <script async src="https://www.google-analytics.com/analytics.js"></script> -->
   </body>
 </html>
